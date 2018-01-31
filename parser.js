@@ -17,7 +17,7 @@ function parseExpression(program) {
   else if (match = /^[^\s(),"]+/.exec(program))
     expr = {type: "word", name: match[0]};
   else
-    throw new SyntaxError("Unexpected syntax: " + program);
+    throw new SyntaxError("Unexpected syntax: " + program);  
 // We can then cut off the part that we matched from the program string
 //  and pass that, along with the object for the expression, 
 //  to parseApply, which checks whether the expression is an application.
@@ -66,7 +66,7 @@ function parseApply(expr, program) {
 // This is all we need to parse miniLanguage. 
 // We wrap it in a convenient parse function 
 // that verifies that it has reached the end of the input string after parsing the expression
-//  (an miniLanguage program is a single expression),
+//  (a miniLanguage program is a single expression),
 //   and that gives us the program’s data structure.
 function parse(program) {
   var result = parseExpression(program);
@@ -117,7 +117,7 @@ specialForms["while"] = function(args, env) {
   while (evaluate(args[0], env) !== false)
     evaluate(args[1], env);
 
-  // Since undefined does not exist in Egg, we return false,
+  // Since undefined does not exist in MiniLanguage, we return false,
   // for lack of a meaningful result.
   return false;
 };
